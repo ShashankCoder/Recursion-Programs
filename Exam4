@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int * InttoBin(int temp){
+    
+    int i = 0, digits[20];
+    int * p;
+    p = digits;
+        
+    while(temp != 0){
+        
+        digits[i] = temp % 2;
+        printf("%d\n", digits[i]);
+        temp = temp/2;
+        i = i + 1;
+    }
+    return p;
+}
+
+int main() {
+	
+	int input[] = {1,2,3};
+	int  * prefixpointer, * suffixpointer, max[20], temp;
+	int i, j, n;
+	
+	for(i=0; i< 2; i++){
+	    
+	    temp = input[i];
+	    prefixpointer = InttoBin(temp);
+	    
+	    
+	    for(j=i+1; j<= 2; j++){
+            
+            temp = input[j];
+            suffixpointer = InttoBin(temp);
+            printf("%p\n", suffixpointer);
+	        
+	        
+	    }
+	}
+	return 0;
+}
