@@ -1,5 +1,3 @@
-/*-------------------Factorial-------------------*/
-
 #include <stdio.h>
 
 /* Calculates the factorial */
@@ -24,6 +22,3 @@ int main() {
 	
 	return 0;
 }
-
-/*-------------------Factorial-------------------*/
-
