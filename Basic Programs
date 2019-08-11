@@ -1,1 +1,29 @@
+/*-------------------Factorial-------------------*/
+
+#include <stdio.h>
+
+/* Calculates the factorial */
+int calcFact(int input){
+    
+    int factorial;
+    
+    if (input == 0) 
+        return 1;
+    else
+        factorial = input * calcFact(input - 1);
+        return factorial;
+}
+
+int main() {
+
+	int inp;
+	
+	printf("Enter Input\n");
+	scanf("%d", &inp);
+	printf("Factorial of Input = %d", calcFact(inp));
+	
+	return 0;
+}
+
+/*-------------------Factorial-------------------*/
 
