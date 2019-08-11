@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<string.h>
+
+int checkIsPallindrome(char* inp_str){
+    int length, count1 = 0, count2;
+    length = strlen(inp_str);
+    count2 = length - 1;
+    
+    while(count1 <= count2){
+        if(inp_str[count1] == '\b'){
+            count1 = count1 + 1;
+            break;
+        } /*if*/
+        else if(inp_str[count2] == '\b'){
+            count2 = count2 - 1;
+            break;
+        } /*else if*/
+        else if(toupper(inp_str[count1]) != toupper(inp_str[count2])){
+            return 0;
+        } /*else if*/
+        else{
+            count1 = count1 + 1;
+            count2 = count2 - 1;
+        } /*else*/
+    } /*while*/
+    return 1;
+} /*checkIsPallindrome*/
+
+int main(){
+    
+    char inp_str[30];
+    int  length, count1 = 0, count2;
+    printf("Enter a string\n");
+    scanf("%s ",inp_str);
+    
+    if (checkIsPallindrome(inp_str) == 1)
+        printf("String is pallindrome");
+    else
+        printf("String is not pallindrome");
+    
+    return 0;
+}
