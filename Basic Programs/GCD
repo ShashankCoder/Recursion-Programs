@@ -1,1 +1,25 @@
+#include <stdio.h>
 
+/* Calculates the GCD */
+int calcGCD(int input1, int input2){
+    
+    if (input1 % input2 == 0)
+        return input2;
+    else if (input2 > input1)
+        return calcGCD(input2, input1);
+    else     
+        return calcGCD(input2, input1 - input2);
+}
+
+int main() {
+
+	int inp1, inp2, gcd;
+	
+	printf("Enter Inputs\n");
+	scanf("%d\n", &inp1);
+	scanf("%d\n", &inp2);
+	gcd = calcGCD(inp1, inp2);
+	printf("GCD = %d", gcd);
+	
+	return 0;
+}
