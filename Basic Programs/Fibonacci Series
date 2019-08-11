@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+/* Calculates the GCD */
+
+int calFib(int seq){
+    
+    if (seq == 1 || seq == 2)
+        return 1;
+    else
+        return calFib(seq - 1) + calFib(seq - 2);
+}
+
+
+int main(){
+    
+    int seqno, count;
+    printf("Enter the sequence number\n");
+    scanf("%d\n", &seqno);
+    
+    for(count = 1; count <= seqno; count++){
+        printf("%d  ", calFib(count));
+    }
+}
