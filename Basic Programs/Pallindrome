@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+
+int isPallindrome(char* inp_str, int count1, int count2){
+    
+    if ((count1 == count2) || (count1 == count2 - 1)){
+        if (inp_str[count1] != inp_str[count2])
+            return 0;
+        return 1;    
+    }
+    
+    if (inp_str[count1] == '\b')
+        return isPallindrome(inp_str, count1 + 1, count2);
+    else if (inp_str[count2] == '\b')
+        return isPallindrome(inp_str, count1, count2 - 1);
+    else
+        return isPallindrome(inp_str, count1 + 1, count2 - 1);
+}
+
+int main(){
+    
+    char inp_str[30];
+    int  length;
+    printf("Enter a string\n");
+    scanf("%s",inp_str);
+    length = strlen(inp_str);
+    printf("%d\n",length);
+    
+    if (isPallindrome(inp_str, 0, length - 1) == 1)
+        printf("String is a pallindrome");
+    else
+        printf("String is not a pallindrome");
+    
+}
