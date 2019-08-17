@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+int countOccurrs(char* inp_str, int position, char element){
+    
+    if(position < 0)
+        return 0;
+    else if(inp_str[position] == element)
+        return countOccurrs(inp_str,position - 1,element) + 1;
+    else
+        return countOccurrs(inp_str,position - 1,element);
+}
+
+void main(){
+
+    char inp_str[30] = "I know my Physics", element;
+    int length, count;
+    printf("Enter the character whose occurence is to be counted\n");
+    scanf("%c", &element);
+    length = strlen(inp_str);
+
+    count = countOccurrs(inp_str, length - 1, element);
+    printf("%d\n",count);
+    
+}
