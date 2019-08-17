@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+int isOccurrs(char* inp_str, int position, char element){
+    
+    if(position < 0)
+        return 1;
+    else if(inp_str[position] == element)
+        return 0;
+    else
+        return isOccurrs(inp_str, position - 1, element);
+}
+
+void main(){
+    
+    char inp_str[30] = "I know my Physics", element;
+    int length;
+    printf("Enter the character to be searched\n");
+    scanf("%c", &element);
+    length = strlen(inp_str);
+
+    if (isOccurrs(inp_str, length - 1, element) == 0)
+        printf("Character is in string");
+    else
+        printf("Character is not in string");
+    
+}
