@@ -1,17 +1,20 @@
 #include<stdio.h>
 #include<string.h>
+#include<ctype.h>
 
 int isPallindrome(char* inp_str, int count1, int count2){
     
-    if ((count1 == count2) || (count1 == count2 - 1)){
-        if (inp_str[count1] != inp_str[count2])
-            return 0;
+    /*Used tolower so that the ocmparison is not case sensitive*/
+    if((tolower)(inp_str[count1]) != (tolower)(inp_str[count2]) && count1 < count2)
         return 1;    
-    }
+    else
+        return 0;
     
-    if (inp_str[count1] == '\b')
+    /*If string charcater is blank on the left side*/    
+    if(isspace(inp_str[count1]))
         return isPallindrome(inp_str, count1 + 1, count2);
-    else if (inp_str[count2] == '\b')
+    /*If string charcater is blank on the right side*/    
+    else if(isspace(inp_str[count2]))
         return isPallindrome(inp_str, count1, count2 - 1);
     else
         return isPallindrome(inp_str, count1 + 1, count2 - 1);
@@ -19,14 +22,12 @@ int isPallindrome(char* inp_str, int count1, int count2){
 
 int main(){
     
-    char inp_str[30];
+    char inp_str[30] = "I am I mai";
     int  length;
-    printf("Enter a string\n");
-    scanf("%s",inp_str);
     length = strlen(inp_str);
     printf("%d\n",length);
     
-    if (isPallindrome(inp_str, 0, length - 1) == 1)
+    if (isPallindrome(inp_str, 0, length - 1) == 0)
         printf("String is a pallindrome");
     else
         printf("String is not a pallindrome");
