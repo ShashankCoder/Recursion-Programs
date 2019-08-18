@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+int main() {
+	
+	char inp_str[10] = "123", out_str[10] = "456";
+	char *inp_str_ptr, *out_str_ptr;
+	
+	inp_str_ptr = inp_str;
+	out_str_ptr = out_str;
+
+	printf("%p ", inp_str);       /*0x7ffff8902f80*/ 
+	printf("%p ", inp_str_ptr);   /*0x7ffff8902f80*/
+	printf("%c ", *inp_str_ptr);  /*1*/ 
+	
+	printf("\n");
+	
+	for(int count = 0;count < 3;count++){
+	    printf("%p ",inp_str[count]);  /*0x31 0x32 0x33*/
+	    printf("%p ",&inp_str[count]); /*0x7ffff8902f80 0x7ffff8902f81 0x7ffff8902f82*/
+	    printf("%c ",inp_str[count]);  /*1 2 3*/
+	}    
+	
+	printf("\n");
+	
+	strcat(inp_str,out_str);
+	
+	for(int count = 0;count < 6;count++){
+	    printf("%p ",&inp_str[count]); /*0x7ffff8902f80 0x7ffff8902f81........0x7ffff8902f85*/
+	    printf("%c ", inp_str[count]); /*1 2 3 4 5 6*/
+	}
+	
+    printf("\n");
+	
+	strcat(inp_str_ptr,out_str_ptr);
+	
+	for(int count = 0;count < 6;count++){
+	    printf("%p ",&inp_str_ptr[count]); /*0x7ffff8902f80 0x7ffff8902f81........0x7ffff8902f85*/
+	    printf("%c ", inp_str_ptr[count]); /*1 2 3 4 5 6*/
+	}
+}
