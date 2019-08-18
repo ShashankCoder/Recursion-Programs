@@ -1,1 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+char* createSubstring(char* inp_str, int count1, int count2){
+    
+    int count = 0, position = 0;
+    char temp_sub_str[30] = "";
+    char* temp_sub_ptr;
+    
+    for(count = count1; count < count2; count++){
+        temp_sub_str[position] = inp_str[count];
+        position++;
+    }
+ 
+    temp_sub_ptr = temp_sub_str;
+    return temp_sub_ptr;
+}
+
+
+int countSubstring(char* inp_str, char* sub_str){
+   
+   int length_of_inpstr, length_of_substr, count1 = 0, count2 = 0, occurence = 0;
+   char* temp_sub_str;
+   
+   length_of_inpstr = strlen(inp_str);
+   length_of_substr = strlen(sub_str);
+  
+   while(count1 < length_of_inpstr - 1){
+       count2 = count1 + length_of_substr;
+       temp_sub_str = createSubstring(inp_str,count1,count2);
+       count1 = length_of_inpstr;
+       if(strcmp(temp_sub_str,sub_str) == 0)
+            occurence = occurence + 1;
+   }
+   return occurence;
+}
+
+void main() {
+    
+	char inp_str[30] = "asbvdexdem";
+	char sub_str[30] = "de";
+	int count_of_substring;
+	count_of_substring = countSubstring(inp_str,sub_str);
+	printf("%d ",count_of_substring);
+}
