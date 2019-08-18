@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+char* StringOperations(char* inp_str,char* out_str){
+    
+    printf("%p ",inp_str); /*0x7ffd665ce620*/
+    printf("%s ",inp_str); /*123*/
+    puts(out_str); /*456*/
+
+    for(int count = 0;count < 3;count++){
+        printf("%p ",&inp_str[count]); /*0x7ffd665ce620 0x7ffd665ce621 0x7ffd665ce622*/
+        printf("%c ",inp_str[count]);  /*1 2 3*/
+    }
+    
+    printf("\n");
+    strcat(inp_str, out_str);
+    
+    for(int count = 0;count < 6;count++){
+        printf("%p ",&inp_str[count]); /*0x7ffd665ce623 0x7ffd665ce624 0x7ffd665ce625*/
+        printf("%c ",inp_str[count]);  /*4 5 6*/
+    }
+    
+    printf("\n");
+    printf("%c ", *inp_str); /*1*/
+    return inp_str; /*0x7ffd665ce620*/
+}
+
+int main() {
+	
+	char inp_str[10] = "123", out_str[10] = "456", fin_res[10];
+	char* fin_res_ptr; 
+	
+	fin_res_ptr= StringOperations(inp_str,out_str); /*0x7ffd665ce620*/
+
+	for(int count = 0;count < 6;count++)
+	    printf("%c ",fin_res_ptr[count]); /*1 2 3 4 5 6*/
+
+}
