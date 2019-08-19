@@ -29,9 +29,12 @@ int countSubstring(char* inp_str, char* sub_str){
    while(count1 < length_of_inpstr - 1){
        count2 = count1 + length_of_substr;
        temp_sub_str = createSubstring(inp_str,count1,count2);
-       count1 = length_of_inpstr;
-       if(strcmp(temp_sub_str,sub_str) == 0)
+       if(strcmp(temp_sub_str,sub_str) == 0){
+            count1 = count2;
             occurence = occurence + 1;
+       }
+       else
+            count1++;
    }
    return occurence;
 }
