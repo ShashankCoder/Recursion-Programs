@@ -5,24 +5,20 @@
 int main() {
 
 	char inp_str[10] = "123", out_str[10] = "548", element;
-	int length_of_inpstr, length_of_outstr;
+	int length_of_inpstr, length_of_outstr, flag;
 
-	strcat(inp_str, "6");                          /*inp_str[0...3] = 1236*/
-	length_of_inpstr = strlen(inp_str);            /*length = 4*/
+	length_of_inpstr = strlen(inp_str);            /*length = 3*/
 	length_of_outstr = strlen(out_str);            /*length = 3*/
-	
+    
+    strcat(inp_str, "6");                          /*inp_str[0...3] = 1236*/
+    length_of_inpstr = strlen(inp_str);            /*length = 4*/
+
 	element = out_str[length_of_outstr - 1];       /*out_str[2] = 8, element = 8*/
-	strcat(inp_str,&element);                      /*inp_str[0...4] = 12368*/
+	strcat(inp_str, &element);                     /*inp_str[0...4] = 12368*/
 	length_of_inpstr = strlen(inp_str);            /*length = 5*/
 	
-	for(int count = 0;count < length_of_inpstr - 1;count++)
-	    printf("%c",inp_str[count]);               /*1 2 3 6 8*/
+	strcpy(out_str,inp_str);                       /*out_str[0...4] = 12368*/
+	length_of_outstr = strlen(out_str);            /*length = 3*/
 	
-	printf("\n");
-	strcpy(out_str,inp_str);
-	length_of_outstr = strlen(out_str);
-	
-	for(int count = 0;count < length_of_outstr - 1;count++)
-	    printf("%c ",out_str[count]); 
-    
+	flag = strcmp(inp_str,out_str);                /*flag = 0, Strings are equal*/
 }
