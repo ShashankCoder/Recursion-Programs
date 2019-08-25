@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+int isSubstring(char* inp_str,char* sub_str,int upper_bound){
+    
+    int lower_bound, count1  = 0;                               /*count1 has to be initialised, else we get seg error*/
+    lower_bound = upper_bound - strlen(sub_str) + 1;
+    
+    for(int count = lower_bound; count <= upper_bound; count++) /*Checking the portion of the inp_str to see if it matches the sub_str*/
+        if (inp_str[count] != sub_str[count1])
+            return 0;
+        else
+            count1 = count1 + 1;
+    return 1; 
+}
+
+int countOccurence(char* inp_str,char* sub_str,int position){
+    
+    char* temp_str;
+ 
+    if(position < strlen(sub_str))
+        return 0;
+    else
+        return countOccurence(inp_str,sub_str,position - 1) 
+               + isSubstring(inp_str,sub_str,position); 
+}
+
+int main() {
+	
+	char inp_str[20] = "aa bbed cbbfg fbbm", sub_str[20] = "bb";
+	int count, length;
+	
+	length = strlen(inp_str) - 1;
+	count = countOccurence(inp_str,sub_str,length);
+	printf("%d ",count);
+  
+	return 0;
+}
