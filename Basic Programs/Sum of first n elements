@@ -1,13 +1,6 @@
 #include <stdio.h>
 
-/*--------------------------------------------
-To find the sum of n elements for the following
-series - 1 + 1/2 + 1/3 +......+ 1/n 
----------------------------------------------*/
-
 float addSer(float nbr){
-    
-    int temp;
     
     if (nbr == 1)
         return 1;
@@ -16,13 +9,13 @@ float addSer(float nbr){
 }
 
 int main(){
+    
     int seqno;
     float result;
     
-    printf("Enter sequence number\n");
+    printf("Enter the number\n");
     scanf("%d\n", &seqno);
-    result = addSer(seqno);
-    printf("Sum of first n numbers = %f", result);
-    
+
+    printf("Sum of first n numbers = %f", addSer(seqno));
     return 0;
 }
