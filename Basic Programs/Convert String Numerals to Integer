@@ -1,36 +1,30 @@
 #include<stdio.h>
 #include<string.h>
 
-int ConvertStrToNum(char* str_inp, int length){
+int ConvertStrToNum(char* str_inp, int position){
     
     int str_to_num;
     
-    if(length == 1){
+  /*Using int here gives the ASCII value. The ASCII value of 0 is 50, 1 is 51 and 
+    so on. The value of '6' would be 56 and '0' would be 50.*/
     
-        /* The length of 56 may be 2 but count starts with 0. So, the position of 6 is 1*/ 
-        /* Using int here gives the ASCII value. The ASCII value of 0 is 50, 1 is 51 and 
-           so on. The value of '6' would be 56 and '0' would be 50.*/
-           
-        str_to_num = (int)str_inp[length - 1] - '0'; 
-        return str_to_num;
-    }
+    if(position < 0)
+       return 0;
+       
     else{
-        str_to_num = (int)str_inp[length - 1] - '0';
-        return ConvertStrToNum(str_inp,length - 1) * 10 + str_to_num;    
+       str_to_num = (int)str_inp[position] - '0';
+       return ConvertStrToNum(str_inp, position - 1) * 10 + str_to_num;    
     }
 }
 
 int main(){
     
     char str_inp[30];
-    int length, str_to_num;
+    int length;
     
     printf("Enter the string to be converted\n");
-    scanf("%s",str_inp);
+    fgets(str_inp,30,stdin);
+    length = strlen(str_inp);  /*Example - length(56) = 2*/
     
-    /*Example - length(56) = 2*/
-    length = strlen(str_inp);                       
-    
-    str_to_num = ConvertStrToNum(str_inp, length);
-    printf("The Output = %d", str_to_num);
+    printf("The Output = %d", ConvertStrToNum(str_inp,length - 1));
 }
