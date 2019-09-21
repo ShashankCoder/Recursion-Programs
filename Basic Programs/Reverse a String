@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+char* reverseString(char* inp_str,char* out_str,int length){
+    
+    int count;
+    
+    if (length < 0)
+        return out_str;
+    else{
+        count = strlen(inp_str) - 1 - length;
+        out_str = appendString(inp_str,out_str,length - 1);
+        out_str[count] = inp_str[length];
+        return out_str;
+    }
+}
+
+int main(){
+    
+    char inp_str[30],out_str[30];
+    char* out_str_ptr;
+    
+    printf("Enter your string\n");
+    fgets(inp_str,30,stdin);
+    puts(inp_str);
+    
+    out_str_ptr = reverseString(inp_str,out_str,strlen(inp_str) - 1);
+    puts(out_str_ptr);
+}
