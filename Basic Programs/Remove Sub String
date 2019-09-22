@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+
+char* compareStrings(char* inp_str,char* sub_str,char* out_str,int position){
+    
+    int count, count1 = 0;
+    char temp_str[30] = " ";
+
+    for(count = position - strlen(sub_str) + 1; count <= position; count++){
+        temp_str[count1] = inp_str[count];
+        count1 = count1 + 1;
+    }
+    
+    printf("%d %s\n",position,temp_str);
+    count = position;
+    
+    if(strcmp(temp_str,sub_str) == 0)
+        while(count >= position - strlen(sub_str) + 1){
+            out_str[count] = '\0';
+            count = count - 1;
+        }
+    else
+        out_str[strlen(out_str)] = temp_str[strlen(temp_str) - 1];
+    
+    printf("%d %s\n",position,out_str);
+    return out_str;
+}
+
+
+char* remSubString(char* inp_str,char* sub_str,char* out_str,int position){
+    
+    if(position < strlen(sub_str) - 1)
+        return out_str;
+    
+    else{
+        out_str = remSubString(inp_str,sub_str,out_str,position - 1);
+        out_str = compareStrings(inp_str,sub_str,out_str,position);
+        return out_str;
+    }
+}
+
+int main(){
+    
+    char inp_str[30],sub_str[30] = "kn",out_str[30] = "";
+    char* out_str_ptr;
+    
+    printf("Enter a string\n");
+    fgets(inp_str,30,stdin);
+    puts(inp_str);
+    
+    out_str_ptr = remSubString(inp_str,sub_str,out_str,strlen(inp_str) - 1);
+    puts(out_str_ptr);
+}
